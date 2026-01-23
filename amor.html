@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Solo Para Ti 💕</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family: 'Playfair Display', serif;
+}
+
+body{
+  min-height:100vh;
+  background: linear-gradient(135deg,#ffb6c1,#ffd6e7);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.container{
+  width:100%;
+  max-width:420px;
+  background:rgba(255,255,255,.9);
+  border-radius:25px;
+  padding:30px 22px;
+  box-shadow:0 15px 40px rgba(0,0,0,.15);
+  text-align:center;
+}
+
+h1{
+  font-family:'Pacifico', cursive;
+  font-size:2.1rem;
+  color:#c2185b;
+  margin-bottom:15px;
+}
+
+.step{
+  display:none;
+  animation:fade .6s ease;
+}
+
+.step.active{
+  display:block;
+}
+
+.question{
+  font-size:1.2rem;
+  margin-bottom:18px;
+  color:#880e4f;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:14px;
+  background:#e91e63;
+  color:white;
+  font-size:1rem;
+  margin-top:10px;
+  cursor:pointer;
+}
+
+button.secondary{
+  background:#f48fb1;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  border-radius:14px;
+  border:2px solid #f8bbd0;
+  font-size:1rem;
+  text-align:center;
+}
+
+.error{
+  margin-top:10px;
+  color:#c62828;
+  font-size:.9rem;
+}
+
+.success{
+  font-family:'Pacifico', cursive;
+  font-size:1.8rem;
+  color:#ad1457;
+}
+
+.hearts{
+  font-size:2rem;
+  margin:12px 0;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(15px);}
+  to{opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Solo para el amor de mi vida 💖</h1>
+
+<!-- PASO 1 -->
+<div class="step active" id="step1">
+  <div class="question">
+    Primer filtro 💌 <br>
+    ¿Solo el amor de mi vida puede ver esto… eres tú?
+  </div>
+
+  <button onclick="goStep2(true)">Sí 💕</button>
+  <button class="secondary" onclick="goStep2(false)">No 🙃</button>
+
+  <div class="error" id="error1"></div>
+</div>
+
+<!-- PASO 2 -->
+<div class="step" id="step2">
+  <div class="question">
+    Segundo filtro 📅 <br>
+    ¿Día de aniversario?<br>Escribe el número:
+  </div>
+
+  <input type="number" id="dayInput" placeholder="Ej: 07">
+  <button onclick="checkDay()">Continuar 💗</button>
+
+  <div class="error" id="error2"></div>
+</div>
+
+<!-- PASO 3 -->
+<div class="step" id="step3">
+  <div class="question">
+    Último filtro 🇫🇷 <br>
+    ¿Cómo decimos delicioso en francés?
+  </div>
+
+  <input type="text" id="wordInput" placeholder="Escribe aquí...">
+  <button onclick="checkWord()">Descubrir mensaje 💞</button>
+
+  <div class="error" id="error3"></div>
+</div>
+
+<!-- FINAL -->
+<div class="step" id="final">
+  <div class="hearts">💖💞💖</div>
+
+  <div class="success">
+    Te quiero mi amor,<br>
+    eres el amor de mi vida,<br>
+    te mando miles de besitos 💕
+  </div>
+
+  <div class="hearts">🥰😘🥰</div>
+</div>
+
+</div>
+
+<script>
+
+function showStep(id){
+  document.querySelectorAll('.step').forEach(step=>{
+    step.classList.remove('active');
+  });
+  document.getElementById(id).classList.add('active');
+}
+
+// PASO 1
+function goStep2(isYes){
+  if(isYes){
+    showStep('step2');
+  }else{
+    document.getElementById('error1').innerText =
+      "Ups… solo el amor de mi vida puede seguir 💔";
+  }
+}
+
+// PASO 2
+function checkDay(){
+  const day = document.getElementById('dayInput').value.trim();
+
+  if(day === "31"){
+    showStep('step3');
+  }else{
+    document.getElementById('error2').innerText =
+      "Mmm… no es ese día especial 💔";
+  }
+}
+
+// PASO 3
+function checkWord(){
+  const word = document.getElementById('wordInput').value.trim().toUpperCase();
+
+  if(word === "DERICIOSO"){
+    showStep('final');
+  }else{
+    document.getElementById('error3').innerText =
+      "Inténtalo otra vez mi amor 💔";
+  }
+}
+
+</script>
+
+</body>
+</html>
