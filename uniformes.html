@@ -28,7 +28,6 @@
 body{
 font-family:'Segoe UI',sans-serif;
 scroll-behavior:smooth;
-padding-top:80px;
 }
 
 /* NAV */
@@ -97,6 +96,10 @@ url('https://images.unsplash.com/photo-1583947582886-f8d4c8a3c18f?auto=format&fi
 center/cover no-repeat;
 background-attachment:fixed;
 }
+
+.extwa{
+    display:none
+}
 </style>
 </head>
 
@@ -111,8 +114,7 @@ background-attachment:fixed;
 >
 <i class="bi bi-whatsapp"></i>
 </a>
-<i class="bi bi-whatsapp"></i>
-</a>
+
 
 <!-- NAV -->
 <nav class="navbar navbar-expand-lg fixed-top bg-white shadow-sm">
@@ -301,7 +303,7 @@ easing:'ease-in-out'
 const phone="5215538881398";
 
 function openWhats(product){
-let msg=`Hola me interesa el producto: ${product}. ¿Me pueden dar cotización? Atte.: el amor de tu vida`;
+let msg=`Hola me interesa ${product}. ¿Me pueden dar cotización? Atte.: el amor de tu vida`;
 window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,"_blank");
 }
 
